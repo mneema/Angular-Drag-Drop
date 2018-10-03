@@ -1,0 +1,63 @@
+<md-dialog  ng-cloak >
+  <form name="vm.manForm" novalidate>
+    
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h1>Configure Manipulation</h1>
+        <md-input-container>
+          <label>If</label>
+          <md-select ng-model="vm.dataModel.stream" name="stream" required>
+            <md-option ng-repeat="stream in vm.streams" value="{{stream.name}}" >
+              {{stream.name}}
+            </md-option>
+          </md-select>
+          <div ng-messages="vm.manForm.stream.$error" ng-show="vm.showErr">
+            <div ng-message="required">Stream is required.</div>
+          </div>
+          
+        </md-input-container>
+        <div layout="row" flex="100" >
+          <md-input-container flex="40">
+            <label>Is</label>
+            <md-select ng-model="vm.dataModel.operator" name="operator" required>
+              <md-option ng-repeat="operator in vm.operators" value="{{operator.name}}" >
+                {{operator.name}}
+              </md-option>
+            </md-select>
+            <div ng-messages="vm.manForm.operator.$error" ng-show="vm.showErr">
+              <div ng-message="required">Operator is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container flex="55" flex-offset="5">
+            <label>Value</label>
+            <input ng-model="vm.dataModel.value" name="value" required>
+            <div ng-messages="vm.manForm.value.$error" ng-show="vm.showErr">
+              <div ng-message="required">Value is required.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <md-input-container>
+          <label>Then</label>
+          <md-select ng-model="vm.dataModel.action" name="action" required>
+            <md-option ng-repeat="action in vm.actions" value="{{action.name}}" >
+              {{action.name}}
+            </md-option>
+          </md-select>
+          <div ng-messages="vm.manForm.action.$error" ng-show="vm.showErr">
+            <div ng-message="required">Action is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+      
+      <span flex></span>
+      <md-button ng-click="vm.cancel()">
+       Cancel
+      </md-button>
+      <md-button class="savebtn" ng-click="vm.save(vm.dataModel)" style="margin-right:20px;">
+        Save
+      </md-button>
+    </div>
+  </form>
+</md-dialog>

@@ -1,0 +1,28 @@
+<div layout="row" layout-xs="column" layout-fill>
+
+ <md-content flex>
+    <header flex layout="column">
+      <fh-navbar creation-date="main.creationDate"></acme-navbar>
+    </header>
+
+    <section class="topSection" layout="row" flex="100">
+
+      <div flex="70" class="mainSection">
+        <md-button class="md-raised expBtn" ng-class="main.classAnimation" ng-click="main.addExpression()" >Add New Expression</md-button>
+        <div ng-repeat="expr in main.expressions" data-id="{{$index}}" class="expContainer">
+          <fh-expr expression="expr" idx="{{$index}}" on-delete="main.deleteExp($index)" on-str-delete="main.deleteStream(strIndex,$index)" on-man-delete="main.deleteManipulation(manIndex,$index)" on-key-press="main.keyPress(event,$index)"></fh-expr>
+
+        </div>
+      </div>
+      <div flex="30" layout="row" class="toolsContainer" layout-fill>
+        <div layout="column" class="toolSection" layout-fill layout-align="center center">
+          <h1 class="md-center" >TOOLS</h1>
+          <h3 class="md-center" >(Drag and drop us on expressions)</h3>
+          <div class="card streamCard" layout-align="center center" data-type="stream" ng-class="main.classAnimation" draggable id="streamBtn" >STREAM</div>
+          <div class="card manCard" data-type="manipulation" ng-class="main.classAnimation" id="manipulationBtn" draggable>MANIPULATION</div>
+          
+      </div>  
+    </section>
+    
+  </md-content>  
+</div>

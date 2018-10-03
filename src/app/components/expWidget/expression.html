@@ -1,0 +1,33 @@
+<div layout="row" layout-wrap layout-padding>
+
+  
+
+  <div class="md-whiteframe-1dp expToken" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center" droppable data-id="{{vm.idx}}" >
+    <md-input-container ng-if="vm.expression.text==''" ng-model-options="{updateOn:'blur'}">
+        <label>Enter Name Here</label>
+        <input ng-model="vm.expression.text" ng-keypress="vm.onKeyPress({event:$event})">
+    </md-input-container>
+    <div ng-if="vm.expression.text!=''" ng-mouseover="showDel=true" ng-mouseleave="showDel=false">
+        <label>{{vm.expression.text}}</label>&nbsp;<div ng-if="showDel" class="del" ng-click="vm.onDelete()">delete</div>
+        
+    </div>
+
+  </div>
+
+  <div>
+    <ul>
+      <li ng-repeat="stream in vm.expression.streams" ng-mouseover="showDel=true" ng-mouseleave="showDel=false">
+        <span>{{stream.getDescription()}}</span>&nbsp;<span ng-if="showDel" class="del" ng-click="vm.onStrDelete({strIndex:$index})">delete</span>
+      </li>
+    </ul>
+    <ul>
+      <li ng-repeat="man in vm.expression.manipulations" ng-mouseover="showDel=true" ng-mouseleave="showDel=false">
+        <span>{{man.getDescription()}}</span>&nbsp;<span class="del" ng-if="showDel" ng-click="vm.onManDelete({manIndex:$index})">delete</span>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+  	
+  </div>
+</div>
